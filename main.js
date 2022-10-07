@@ -21,7 +21,7 @@ const scoreEl = document.getElementsByClassName('score');
 const messageEl = document.querySelector('h2');
 
 /*---------Event Listeners--------*/
-//play button
+document.querySelector('button').addEventListener('click', init)
 //message elements
 document.getElementById('s0').addEventListener('click', handleStrum);
 document.getElementById('s1').addEventListener('click', handleStrum);
@@ -48,7 +48,7 @@ function handleStrum(evt) {
     pChoice = parseInt(evt.target.id.replace('s', ''));
     playerArray.push(pChoice);
     renderResults();
-    if (playerArray)
+    if (playerArray.length === computerArray.length)
     computerChoice();
 }
 function render() {
@@ -62,6 +62,7 @@ playerArray.forEach(function(pick) {
     if (playerArray[pick] === computerArray[pick]) {
      score++ 
      scoreEl.innerText = `${score}`;
+     renderNotes(pChoice);
     } else {
         //game over
         renderMessage();
@@ -71,20 +72,33 @@ playerArray.forEach(function(pick) {
 function renderScore() {
 
 }
-function renderNotes(cChoice) {
-    let strum = document.getElementById(`s${cChoice}`)
+function renderNotes(choice) {
+    let strum = document.getElementById(`s${choice}`)
     strum.className = 'comp-choice'
+    computerTurn = false;
     // cChoice.className.add('comp-choice');
     // strum.className.add('comp-choice');
 
 }
+// function playString (strum) {
+//         timer = setInterval(function() {
+//             strum.className = 'comp-choice'
+//             strum++;
+//             if (strum < computerArray.length) {
+//             clearInterval(timer);
+//             return;
+//         }
+//     }, 1000);
+//     strum.className.remove('comp-choice')
+// }
+
 function computerChoice() {
     computerTurn = true;
+    playerArray = []
     //disable player controls
     const cChoice = Math.floor(Math.random() * 6);
     computerArray.push(cChoice);
     renderNotes(cChoice);
-    computerTurn = false;
 }
 // computer select string
 // computer play string
