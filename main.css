@@ -131,6 +131,9 @@ button {
     width: 8vw;
     height: 30vh;
 }
-#s1:hover, #s2:hover, #s3:hover, #s4:hover, #s5:hover, #s0:hover {
+#s0.active:hover:active, #s1.active:hover, #s2.active:hover, #s3.active:hover, #s4.active:hover, #s5.active:hover {
+transform: scale(3);
+}
+#s0.comp-choice, #s1.comp-choice, #s2.comp-choice, #s3.comp-choice, #s4.comp-choice, #s5.comp-choice {
 transform: scale(3);
 }
