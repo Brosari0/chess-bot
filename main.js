@@ -1,25 +1,74 @@
 /*----------Constants-----------*/
-//player
-//strings
+// const AUDIO = new Audio()
+const STRINGS = {
+    '0': 'e2',
+    '1': 'a2',
+    '2': 'd3',
+    '3': 'g3',
+    '4': 'b3',
+    '5': 'e4',
+}
 
 /*---------State Variables-----------*/
-// player array
-// computer array
-
+let playerArray = [];
+let computerArray = [];
+let score;
 
 /*---------Cached Elements-----------*/
-// each string
-// play button/ play again button
+const stringEl = document.getElementsByClassName('strings');
+const playBtn = document.querySelector('button');
+const scoreEl = document.getElementsByClassName('score');
 
 /*---------Event Listeners--------*/
 //play button
 //message elements
-//string buttons
+document.getElementById('s0').addEventListener('click', handleStrum);
+document.getElementById('s1').addEventListener('click', handleStrum);
+document.getElementById('s2').addEventListener('click', handleStrum);
+document.getElementById('s3').addEventListener('click', handleStrum);
+document.getElementById('s4').addEventListener('click', handleStrum);
+document.getElementById('s5').addEventListener('click', handleStrum);
 
 
 /*-----------Functions------------*/
-// init
-// render
+init();
+
+function init() {
+    score = 0;
+    playerArray = []
+    computerArray = []
+    computerChoice();
+    render();
+}
+function handleStrum(evt) {
+    //guard
+    // if (evt.target.className !== 'strings') return;
+    console.log(evt);
+    pChoice = document.getElementById(`evt`);
+    console.log(pChoice);
+    computerChoice();
+}
+function render() {
+    renderNotes();
+    renderResults();
+    renderScore();
+}
+function renderResults() {
+
+}
+function renderScore() {
+
+}
+function renderNotes() {
+
+}
+function computerChoice() {
+    const rndIdx = Math.floor(Math.random() * 6);
+    const cChoice = rndIdx;
+    computerArray.push(cChoice);
+    renderNotes();
+
+}
 // computer select string
 // computer play string
 // player select string/play string
