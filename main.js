@@ -76,21 +76,20 @@ function renderNotes(choice) {
     let strum = document.getElementById(`s${choice}`)
     strum.className = 'comp-choice'
     computerTurn = false;
-    // cChoice.className.add('comp-choice');
-    // strum.className.add('comp-choice');
+        let count = computerArray.length;
+        // AUDIO.currentTime = 0;
+        // AUDIO.play();
+        const timerId = setInterval(function() {
+          count--;
+          if (count) {
+            strum.className = 'comp-choice'
+          } else {
+            clearInterval(timerId);
+            strum.classList.remove('comp-choice')
+          }
+        }, 1000);
+    }
 
-}
-// function playString (strum) {
-//         timer = setInterval(function() {
-//             strum.className = 'comp-choice'
-//             strum++;
-//             if (strum < computerArray.length) {
-//             clearInterval(timer);
-//             return;
-//         }
-//     }, 1000);
-//     strum.className.remove('comp-choice')
-// }
 
 function computerChoice() {
     computerTurn = true;
