@@ -1,0 +1,134 @@
+html {
+    width: 100vw;
+}
+body {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+button {
+    grid-area: buttons;
+}
+
+.fret-board {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    "s0 s0 s0"
+    "s1 s1 s1"
+    "s2 s2 s2"
+    "s3 s3 s3"
+    "s4 s4 s4"
+    "s5 s5 s5";
+    margin-left: 0;
+
+}
+
+#s0 {
+    grid-area: s0;
+    background: red;
+    color: red;
+    width: 100vw;
+    height: 1vh;
+    margin: 2vh 0;
+    z-index: 0;
+}
+#s1 {
+    grid-area: s1;
+    background: orange;
+    color: red;
+    width: 100vw;
+    height: 1vh;
+    margin: 2vh 0;
+    z-index: 0;
+}
+#s2 {
+    grid-area: s2;
+    background: yellow;
+    color: red;
+    width: 100vw;
+    height: 1vh;
+    margin: 2vh 0;
+    z-index: 0;
+}
+#s3 {
+    grid-area: s3;
+    background: blue;
+    color: red;
+    width: 100vw;
+    height: 1vh;
+    margin: 2vh 0;
+    z-index: 0;
+}
+#s4 {
+    grid-area: s4;
+    background: green;
+    color: red;
+    width: 100vw;
+    height: 1vh;
+    margin: 2vh 0;
+    z-index: 0;
+}
+#s5 {
+    grid-area: s5;
+    background: indigo;
+    color: red;
+    width: 100vw;
+    height: 1vh;
+    margin: 2vh 0;
+    z-index: 1;
+}
+.gbody {
+    position: absolute;
+    top: 10vh;
+    z-index: -4;
+    background: rgb(194, 149, 83);
+    width: 20vw;
+    height: 80vh;
+    border-radius: 0 30% 30% 0;
+    box-shadow: 10px 1px darkgrey;
+}
+.ghole {
+    position: absolute;
+    top: 33.5vh;
+    left: -7vw;
+    z-index: -3;
+    background: black;
+    width: 12.5vw;
+    height: 30vh;
+    border-radius: 50%;
+}
+.gstructuretop {
+    position: absolute;
+    top: 2vh;
+    z-index: -1;
+    background: aqua;
+    width: 17vw;
+    height: 18vh;
+    rotate: 20deg;
+    border-radius: 35% 35% 35% 0;
+}
+.gneck {
+    position: absolute;
+    top: 32.5vh;
+    z-index: -4;
+    background: rgb(194, 149, 83);
+    width: 100vw;
+    height: 30vh;
+}
+.ghead {
+    position: absolute;
+    top: 32.5vh;
+    right: 0px;
+    z-index: -1;
+    background: black;
+    width: 8vw;
+    height: 30vh;
+}
+.gneck #s1:hover, #s2:hover, #s3:hover, #s4:hover, #s5:hover, #s0:hover {
+height: 2vh;
+}
