@@ -15,9 +15,9 @@ let computerArray = [];
 let score;
 let computerTurn;
 /*---------Cached Elements-----------*/
-const stringEl = document.getElementsByClassName('strings');
+// const stringEl = document.getElementsByClassName('strings');
 const playBtn = document.querySelector('button');
-const scoreEl = document.getElementsByClassName('score');
+const scoreEl = document.getElementById('score');
 const messageEl = document.querySelector('h2');
 
 /*---------Event Listeners--------*/
@@ -44,60 +44,76 @@ function init() {
 function handleStrum(evt) {
     //guard
     if (computerTurn === true) return;
-    // if (evt.target.className !== 'strings') return;
-    pChoice = parseInt(evt.target.id.replace('s', ''));
-    playerArray.push(pChoice);
-    renderResults();
+        pChoice = parseInt(evt.target.id.replace('s', ''));
+        playerArray.push(pChoice);
+        renderResults();
     if (playerArray.length === computerArray.length)
-    computerChoice();
+        computerChoice();
 }
 function render() {
     renderScore();
 }
 function renderMessage() {
     messageEl.innerText = `Game Over. You scored ${score} points!`
+    computerTurn = true;
 }
 function renderResults() {
-playerArray.forEach(function(pick) {
-    if (playerArray[pick] === computerArray[pick]) {
-     score++ 
-     scoreEl.innerText = `${score}`;
-     renderNotes(pChoice);
-    } else {
+    for (i = 0; i < playerArray; i++) {
+        if (playerArray[i] === computerArray[i]) {
+            score++;
+        } else {
         //game over
-        renderMessage();
-    }
-});
+            renderMessage();
+        }
+    };
 }
 function renderScore() {
 
 }
-function renderNotes(choice) {
-    let strum = document.getElementById(`s${choice}`)
-    strum.className = 'comp-choice'
-    computerTurn = false;
-        let count = computerArray.length;
-        // AUDIO.currentTime = 0;
-        // AUDIO.play();
-        const timerId = setInterval(function() {
-          count--;
-          if (count) {
-            strum.className = 'comp-choice'
-          } else {
+// function renderPNotes(pChoice) {
+//     pChoice.className = 'p-choice'
+//     console.log(pChoice.className)
+//         let count = playerArray.length;
+//         // AUDIO.currentTime = 0;
+//         // AUDIO.play();
+//         const timerId = setInterval(function() {
+//             count--;
+//             if (count) {
+//         pChoice.className = 'p-choice'
+//         } else {
+//             clearInterval(timerId);
+//             console.log(pChoice.classList)
+//             pChoice.classList.remove('p-choice')
+//         }
+//     }, 1000);
+// }
+
+function renderNotes() {
+    let x = 0;
+    let strum = document.getElementById(`s${computerArray[0]}`);
+    strum.className = 'comp-choice';
+    // AUDIO.currentTime = 0;
+    // AUDIO.play();
+    const timerId = setInterval(function() {
+        x++;
+        strum.classList.remove('comp-choice');
+        if (x < computerArray.length) {
+            strum = document.getElementById(`s${computerArray[x]}`);
+            strum.className = 'comp-choice';
+        } else {
             clearInterval(timerId);
-            strum.classList.remove('comp-choice')
-          }
-        }, 1000);
-    }
+            computerTurn = false;
+        }
+    }, 500);
+}
 
 
 function computerChoice() {
-    computerTurn = true;
-    playerArray = []
-    //disable player controls
+    computerTurn = true; // disable pControls
+    playerArray = [] //reset player note array to 0
     const cChoice = Math.floor(Math.random() * 6);
-    computerArray.push(cChoice);
-    renderNotes(cChoice);
+    computerArray.push(cChoice); // adds a note to the computers choices
+    renderNotes(); //shows the player
 }
 // computer select string
 // computer play string

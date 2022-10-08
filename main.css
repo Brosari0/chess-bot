@@ -137,3 +137,6 @@ transform: scale(3);
 #s0.comp-choice, #s1.comp-choice, #s2.comp-choice, #s3.comp-choice, #s4.comp-choice, #s5.comp-choice {
 transform: scale(3);
 }
+#s0.p-choice, #s1.p-choice, #s2.p-choice, #s3.p-choice, #s4.p-choice, #s5.p-choice {
+transform: scale(3);
+}
