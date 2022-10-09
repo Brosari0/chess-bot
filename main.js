@@ -14,6 +14,7 @@ let playerArray = [];
 let computerArray = [];
 let score;
 let computerTurn;
+let pCurChoice;
 /*---------Cached Elements-----------*/
 // const stringEl = document.getElementsByClassName('strings');
 const playBtn = document.querySelector('button');
@@ -36,6 +37,7 @@ init();
 
 function init() {
     score = 0;
+    messageEl.innerText = ''
     playerArray = []
     computerArray = []
     computerChoice();
@@ -46,7 +48,8 @@ function handleStrum(evt) {
     if (computerTurn === true) return;
         pChoice = parseInt(evt.target.id.replace('s', ''));
         playerArray.push(pChoice);
-        renderResults();
+        pCurChoice = playerArray[playerArray.length - 1];
+        renderResults(pCurChoice);
     if (playerArray.length === computerArray.length)
         computerChoice();
 }
@@ -55,20 +58,21 @@ function render() {
 }
 function renderMessage() {
     messageEl.innerText = `Game Over. You scored ${score} points!`
-    computerTurn = true;
 }
-function renderResults() {
-    for (i = 0; i < playerArray; i++) {
-        if (playerArray[i] === computerArray[i]) {
+function renderResults(pCurChoice) {
+        if (pCurChoice === computerArray[playerArray.length -1]) {
+            console.log(playerArray);
             score++;
+            renderScore();
         } else {
+            computerTurn = true;
         //game over
             renderMessage();
         }
     };
-}
-function renderScore() {
 
+function renderScore() {
+    scoreEl.innerText = `${score}`;
 }
 // function renderPNotes(pChoice) {
 //     pChoice.className = 'p-choice'
