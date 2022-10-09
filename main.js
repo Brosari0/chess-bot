@@ -36,6 +36,7 @@ document.getElementById('s5').addEventListener('click', handleStrum);
 init();
 
 function init() {
+    playBtn.style.visibility = "hidden"
     score = 0;
     messageEl.innerText = ''
     playerArray = []
@@ -58,12 +59,14 @@ function render() {
 }
 function renderMessage() {
     messageEl.innerText = `Game Over. You scored ${score} points!`
+    playBtn.style.visibility = ''
 }
 function renderResults(pCurChoice) {
         if (pCurChoice === computerArray[playerArray.length -1]) {
             console.log(playerArray);
             score++;
             renderScore();
+            renderPNotes(pCurChoice);
         } else {
             computerTurn = true;
         //game over
@@ -74,23 +77,21 @@ function renderResults(pCurChoice) {
 function renderScore() {
     scoreEl.innerText = `${score}`;
 }
-// function renderPNotes(pChoice) {
-//     pChoice.className = 'p-choice'
-//     console.log(pChoice.className)
-//         let count = playerArray.length;
-//         // AUDIO.currentTime = 0;
-//         // AUDIO.play();
-//         const timerId = setInterval(function() {
-//             count--;
-//             if (count) {
-//         pChoice.className = 'p-choice'
-//         } else {
-//             clearInterval(timerId);
-//             console.log(pChoice.classList)
-//             pChoice.classList.remove('p-choice')
-//         }
-//     }, 1000);
-// }
+function renderPNotes(pCurChoice) {
+    let strum = document.getElementById(`s${pCurChoice}`);
+    strum.className = 'p-choice';
+    let x = 0
+    // AUDIO.currentTime = 0;
+    // AUDIO.play();
+    const timerId = setInterval(function() {
+        x++
+        if (x < 3) {
+        strum.classList.remove('p-choice');
+        } else {
+            clearInterval(timerId);
+        }
+    }, 500);
+}
 
 function renderNotes() {
     let x = 0;
