@@ -95,13 +95,15 @@ function renderNotes() {
     let x = 0;
     let strum = document.getElementById(`s${computerArray[0]}`);
     strum.className = 'comp-choice';
-    // AUDIO.currentTime = 0;
-    // AUDIO.play();
+    STRINGS[computerArray[0]].currentTime = 3;
+    STRINGS[computerArray[0]].play();
     const timerId = setInterval(function() {
         x++;
         strum.classList.remove('comp-choice');
         if (x < computerArray.length) {
             strum = document.getElementById(`s${computerArray[x]}`);
+            STRINGS[computerArray[x]].currentTime = 3;
+            STRINGS[computerArray[x]].play();
             strum.className = 'comp-choice';
         } else {
             clearInterval(timerId);
