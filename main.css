@@ -14,7 +14,10 @@ button {
     border-color: rgb(231, 54, 54);
     color: white;
     background-color: rgb(245, 55, 86);
-
+    width: 15vw;
+    height: 8vh;
+    border-radius: 50%;
+    font-size: 2.0vh;
 }
 .container {
     position: relative;

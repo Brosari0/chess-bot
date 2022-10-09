@@ -1,13 +1,12 @@
 /*----------Constants-----------*/
-// const AUDIO = new Audio()
 const STRINGS = {
-    '0': 'e2',
-    '1': 'a2',
-    '2': 'd3',
-    '3': 'g3',
-    '4': 'b3',
-    '5': 'e4',
-}
+    '0': new Audio('1st_String_E_64kb.mp3'),
+    '1': new Audio('2nd_String_B__64kb.mp3'),
+    '2': new Audio('3rd_String_G_64kb.mp3'),
+    '3': new Audio('4th_String_D_64kb.mp3'),
+    '4': new Audio('5th_String_A_64kb.mp3'),
+    '5': new Audio('6th_String_E_64kb.mp3'),
+};
 
 /*---------State Variables-----------*/
 let playerArray = [];
@@ -61,7 +60,6 @@ function renderMessage() {
 }
 function renderResults(pCurChoice) {
         if (pCurChoice === computerArray[playerArray.length -1]) {
-            console.log(playerArray);
             score++;
             renderScore();
             renderPNotes(pCurChoice);
@@ -79,12 +77,14 @@ function renderPNotes(pCurChoice) {
     let strum = document.getElementById(`s${pCurChoice}`);
     strum.className = 'p-choice';
     let x = 0
-    // AUDIO.currentTime = 0;
-    // AUDIO.play();
+    STRINGS[pCurChoice].currentTime = 3;
+    STRINGS[pCurChoice].play();
     const timerId = setInterval(function() {
         x++
         if (x < 3) {
-        strum.classList.remove('p-choice');
+            return;
+        } else if (x = 4) {
+            strum.classList.remove('p-choice');
         } else {
             clearInterval(timerId);
         }
