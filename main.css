@@ -11,7 +11,10 @@ body {
 }
 
 button {
-    grid-area: buttons;
+    border-color: rgb(231, 54, 54);
+    color: white;
+    background-color: rgb(245, 55, 86);
+
 }
 .container {
     position: relative;

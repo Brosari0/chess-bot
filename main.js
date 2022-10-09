@@ -33,8 +33,6 @@ document.getElementById('s5').addEventListener('click', handleStrum);
 
 
 /*-----------Functions------------*/
-init();
-
 function init() {
     playBtn.style.visibility = "hidden"
     score = 0;
