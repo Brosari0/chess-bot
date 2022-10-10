@@ -17,11 +17,11 @@ let pCurChoice;
 let gameOver;
 let highScore = 0;
 /*---------Cached Elements-----------*/
-// const stringEl = document.getElementsByClassName('strings');
+
 const playBtn = document.querySelector('button');
 const highScoreEl = document.getElementById('high-score');
 const messageEl = document.querySelector('h2');
-const pick = document.getElementsByClassName('strings');
+let stringEl = document.getElementsByClassName('strings');
 
 /*---------Event Listeners--------*/
 document.querySelector('button').addEventListener('click', init)
@@ -54,11 +54,17 @@ function handleStrum(evt) {
         renderResults(pCurChoice);
         if (playerArray.length === computerArray.length) {
             computerTurn = true;
+            for (let i = 0; i < stringEl.length; i++) {
+                stringEl[i].classList.remove('pick');
+            }
                 const pause = setTimeout (renderScore, 1000)
         }
     }
 
 function render() {
+    for (let i = 0; i < stringEl.length; i++) {
+        stringEl[i].classList.add('pick');
+    }
 }
 function renderMessage() {
     gameOver = true;
@@ -77,6 +83,9 @@ function renderResults(pCurChoice) {
             renderPNotes(pCurChoice);
         } else {
             computerTurn = true;
+            for (let i = 0; i < stringEl.length; i++) {
+                stringEl[i].classList.remove('pick');
+            }
         //game over
             renderMessage();
         }
@@ -119,6 +128,9 @@ function renderNotes() {
         } else {
             clearInterval(timerId);
             computerTurn = false;
+            for (let i = 0; i < stringEl.length; i++) {
+                stringEl[i].classList.add('pick');
+            }
         }
     }, 500);
 }
@@ -127,7 +139,6 @@ function renderNotes() {
 function computerChoice() {
     if (gameOver === true) return;
     computerTurn = true; // disable pControls
-    // pick.classList.add('pick');
     playerArray = [] //reset player note array to 0
     const cChoice = Math.floor(Math.random() * 6);
     computerArray.push(cChoice); // adds a note to the computers choices
