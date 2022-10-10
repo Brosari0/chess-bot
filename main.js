@@ -15,10 +15,11 @@ let score;
 let computerTurn;
 let pCurChoice;
 let gameOver;
+let highScore = 0;
 /*---------Cached Elements-----------*/
 // const stringEl = document.getElementsByClassName('strings');
 const playBtn = document.querySelector('button');
-const scoreEl = document.getElementById('score');
+const highScoreEl = document.getElementById('high-score');
 const messageEl = document.querySelector('h2');
 const pick = document.getElementsByClassName('strings');
 
@@ -62,8 +63,15 @@ function render() {
 }
 function renderMessage() {
     gameOver = true;
+    if (score > highScore) {
+        highScore = score;
+        messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} points!`;
+        highScoreEl.innerText = `${highScore}`;
+        playBtn.style.visibility = '';
+    } else {
     messageEl.innerText = `Game Over. You scored ${score} points!`;
     playBtn.style.visibility = '';
+    }
 }
 function renderResults(pCurChoice) {
         if (pCurChoice === computerArray[playerArray.length -1]) {
@@ -76,9 +84,7 @@ function renderResults(pCurChoice) {
     };
 
 function renderScore() {
-    console.log('I made it!')
     score++;
-    scoreEl.innerText = `${score}`;
     computerChoice();
 }
 function renderPNotes(pCurChoice) {
