@@ -50,13 +50,13 @@ function handleStrum(evt) {
         playerArray.push(pChoice);
         pCurChoice = playerArray[playerArray.length - 1];
         renderResults(pCurChoice);
-    if (playerArray.length === computerArray.length) {
-        renderScore();
-        computerChoice();
+        if (playerArray.length === computerArray.length) {
+            computerTurn = true;
+                const pause = setTimeout (renderScore, 1000)
+        }
     }
-}
+
 function render() {
-    renderScore();
 }
 function renderMessage() {
     messageEl.innerText = `Game Over. You scored ${score} points!`
@@ -73,8 +73,10 @@ function renderResults(pCurChoice) {
     };
 
 function renderScore() {
+    console.log('I made it!')
     score++;
     scoreEl.innerText = `${score}`;
+    computerChoice();
 }
 function renderPNotes(pCurChoice) {
     let strum = document.getElementById(`s${pCurChoice}`);
@@ -87,9 +89,7 @@ function renderPNotes(pCurChoice) {
         if (x = 1) {
             strum.classList.remove('p-choice');
         } else {
-            setTimout(function() {
-                clearInterval(timerId);
-            }, 500);
+            clearInterval(timerId);
         }
     }, 500,);
 }
