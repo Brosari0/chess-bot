@@ -14,6 +14,7 @@ let computerArray = [];
 let score;
 let computerTurn;
 let pCurChoice;
+let gameOver;
 /*---------Cached Elements-----------*/
 // const stringEl = document.getElementsByClassName('strings');
 const playBtn = document.querySelector('button');
@@ -36,6 +37,7 @@ document.getElementById('s5').addEventListener('click', handleStrum);
 /*-----------Functions------------*/
 function init() {
     playBtn.style.visibility = "hidden"
+    gameOver = false;
     score = 0;
     messageEl.innerText = ''
     playerArray = []
@@ -59,8 +61,9 @@ function handleStrum(evt) {
 function render() {
 }
 function renderMessage() {
-    messageEl.innerText = `Game Over. You scored ${score} points!`
-    playBtn.style.visibility = ''
+    gameOver = true;
+    messageEl.innerText = `Game Over. You scored ${score} points!`;
+    playBtn.style.visibility = '';
 }
 function renderResults(pCurChoice) {
         if (pCurChoice === computerArray[playerArray.length -1]) {
@@ -117,6 +120,7 @@ function renderNotes() {
 
 
 function computerChoice() {
+    if (gameOver === true) return;
     computerTurn = true; // disable pControls
     // pick.classList.add = 'pick'
     playerArray = [] //reset player note array to 0

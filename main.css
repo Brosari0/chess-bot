@@ -112,12 +112,24 @@ button {
 }
 .gstructuretop {
     position: absolute;
-    top: 2vh;
+    top: -4vh;
+    left: -14vh;
     z-index: -1;
     background: aqua;
     width: 17vw;
     height: 18vh;
     rotate: 20deg;
+    border-radius: 35% 35% 35% 0;
+}
+.gstructurebottom {
+    position: absolute;
+    top: 86vh;
+    left: -14vh;
+    z-index: 3;
+    background: aqua;
+    width: 17vw;
+    height: 18vh;
+    rotate: -20deg;
     border-radius: 35% 35% 35% 0;
 }
 .gneck {
