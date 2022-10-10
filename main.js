@@ -25,7 +25,6 @@ let stringEl = document.getElementsByClassName('strings');
 
 /*---------Event Listeners--------*/
 document.querySelector('button').addEventListener('click', init)
-//message elements
 document.getElementById('s0').addEventListener('click', handleStrum);
 document.getElementById('s1').addEventListener('click', handleStrum);
 document.getElementById('s2').addEventListener('click', handleStrum);
