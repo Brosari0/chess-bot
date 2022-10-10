@@ -43,7 +43,6 @@ function init() {
     playerArray = []
     computerArray = []
     computerChoice();
-    render();
 }
 function handleStrum(evt) {
     //guard
@@ -52,18 +51,12 @@ function handleStrum(evt) {
         playerArray.push(pChoice);
         pCurChoice = playerArray[playerArray.length - 1];
         renderResults(pCurChoice);
-        if (playerArray.length === computerArray.length) {
-            computerTurn = true;
-            for (let i = 0; i < stringEl.length; i++) {
-                stringEl[i].classList.remove('pick');
-            }
-                const pause = setTimeout (renderScore, 1000)
+    if (playerArray.length === computerArray.length) {
+        computerTurn = true;
+        for (let i = 0; i < stringEl.length; i++) {
+            stringEl[i].classList.remove('pick');
         }
-    }
-
-function render() {
-    for (let i = 0; i < stringEl.length; i++) {
-        stringEl[i].classList.add('pick');
+        const pause = setTimeout (renderScore, 1000)
     }
 }
 function renderMessage() {

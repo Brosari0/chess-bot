@@ -5,22 +5,34 @@ body {
     margin: 0;
 }
 .high-score {
+    color: white;
+}
+.high-score-holder {
     border-radius: 50%;
     background-color: red;
+    width: 20px;
+    height: auto;
 }
 button {
     border-color: rgb(231, 54, 54);
     color: white;
     background-color: rgb(245, 55, 86);
-    width: 6vw;
+    width: 10vw;
     height: 10vh;
     border-radius: 50%;
     font-size: 3vh;
+    margin: 30px;
 }
 .container {
     position: relative;
 }
-
+h2 {
+    color: rgb(235, 75, 75);
+    background: rgba(20, 20, 20, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .fret-board {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
@@ -103,7 +115,9 @@ button {
     position: absolute;
     left: -7vw;
     z-index: -3;
-    background: black;
+    background: rgb(87, 51, 21);
+    border-color: black;
+    border: solid;
     width: 12.5vw;
     height: 30vh;
     border-radius: 50%;
@@ -157,4 +171,5 @@ opacity: 60%;
 }
 #s0.pick:hover, #s1.pick:hover, #s2.pick:hover, #s3.pick:hover, #s4.pick:hover, #s5.pick:hover {
 transform: scale(3);
+cursor: pointer;
 }
