@@ -23,7 +23,6 @@ const highScoreEl = document.getElementById('high-score');
 const messageEl = document.querySelector('h2');
 const pick = document.getElementsByClassName('strings');
 
-
 /*---------Event Listeners--------*/
 document.querySelector('button').addEventListener('click', init)
 //message elements
@@ -89,7 +88,7 @@ function renderScore() {
 }
 function renderPNotes(pCurChoice) {
     let strum = document.getElementById(`s${pCurChoice}`);
-    strum.className = 'p-choice';
+    strum.classList.add('p-choice');
     let x = 0;
     STRINGS[pCurChoice].currentTime = 3;
     STRINGS[pCurChoice].play();
@@ -106,7 +105,7 @@ function renderPNotes(pCurChoice) {
 function renderNotes() {
     let x = 0;
     let strum = document.getElementById(`s${computerArray[0]}`);
-    strum.className = 'comp-choice';
+    strum.classList.add('comp-choice');
     STRINGS[computerArray[0]].currentTime = 3;
     STRINGS[computerArray[0]].play();
     const timerId = setInterval(function() {
@@ -116,7 +115,7 @@ function renderNotes() {
             strum = document.getElementById(`s${computerArray[x]}`);
             STRINGS[computerArray[x]].currentTime = 3;
             STRINGS[computerArray[x]].play();
-            strum.className = 'comp-choice';
+            strum.classList.add('comp-choice');
         } else {
             clearInterval(timerId);
             computerTurn = false;
@@ -128,7 +127,7 @@ function renderNotes() {
 function computerChoice() {
     if (gameOver === true) return;
     computerTurn = true; // disable pControls
-    // pick.classList.add = 'pick'
+    // pick.classList.add('pick');
     playerArray = [] //reset player note array to 0
     const cChoice = Math.floor(Math.random() * 6);
     computerArray.push(cChoice); // adds a note to the computers choices

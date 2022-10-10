@@ -1,23 +1,21 @@
-html {
-    width: 100vw;
-}
 body {
     background-color: aqua;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
     margin: 0;
 }
-
+.high-score {
+    border-radius: 50%;
+    background-color: red;
+}
 button {
     border-color: rgb(231, 54, 54);
     color: white;
     background-color: rgb(245, 55, 86);
-    width: 15vw;
-    height: 8vh;
+    width: 6vw;
+    height: 10vh;
     border-radius: 50%;
-    font-size: 2.0vh;
+    font-size: 3vh;
 }
 .container {
     position: relative;
