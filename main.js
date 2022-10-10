@@ -19,6 +19,8 @@ let pCurChoice;
 const playBtn = document.querySelector('button');
 const scoreEl = document.getElementById('score');
 const messageEl = document.querySelector('h2');
+const pick = document.getElementsByClassName('strings');
+
 
 /*---------Event Listeners--------*/
 document.querySelector('button').addEventListener('click', init)
@@ -48,8 +50,10 @@ function handleStrum(evt) {
         playerArray.push(pChoice);
         pCurChoice = playerArray[playerArray.length - 1];
         renderResults(pCurChoice);
-    if (playerArray.length === computerArray.length)
+    if (playerArray.length === computerArray.length) {
+        renderScore();
         computerChoice();
+    }
 }
 function render() {
     renderScore();
@@ -60,8 +64,6 @@ function renderMessage() {
 }
 function renderResults(pCurChoice) {
         if (pCurChoice === computerArray[playerArray.length -1]) {
-            score++;
-            renderScore();
             renderPNotes(pCurChoice);
         } else {
             computerTurn = true;
@@ -71,24 +73,25 @@ function renderResults(pCurChoice) {
     };
 
 function renderScore() {
+    score++;
     scoreEl.innerText = `${score}`;
 }
 function renderPNotes(pCurChoice) {
     let strum = document.getElementById(`s${pCurChoice}`);
     strum.className = 'p-choice';
-    let x = 0
+    let x = 0;
     STRINGS[pCurChoice].currentTime = 3;
     STRINGS[pCurChoice].play();
     const timerId = setInterval(function() {
-        x++
-        if (x < 3) {
-            return;
-        } else if (x = 4) {
+        x++;
+        if (x = 1) {
             strum.classList.remove('p-choice');
         } else {
-            clearInterval(timerId);
+            setTimout(function() {
+                clearInterval(timerId);
+            }, 500);
         }
-    }, 500);
+    }, 500,);
 }
 
 function renderNotes() {
@@ -115,6 +118,7 @@ function renderNotes() {
 
 function computerChoice() {
     computerTurn = true; // disable pControls
+    // pick.classList.add = 'pick'
     playerArray = [] //reset player note array to 0
     const cChoice = Math.floor(Math.random() * 6);
     computerArray.push(cChoice); // adds a note to the computers choices
