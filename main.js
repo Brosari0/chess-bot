@@ -16,15 +16,18 @@ let computerTurn;
 let pCurChoice;
 let gameOver;
 let highScore = 0;
+let freePlay = false;
 /*---------Cached Elements-----------*/
 
-const playBtn = document.querySelector('button');
+const playBtn = document.getElementById('playB');
 const highScoreEl = document.getElementById('high-score');
 const messageEl = document.querySelector('h2');
 let stringEl = document.getElementsByClassName('strings');
+const freePlayBtn = document.getElementById('free-play');
 
 /*---------Event Listeners--------*/
-document.querySelector('button').addEventListener('click', init)
+document.querySelector('#playB').addEventListener('click', init);
+document.getElementById('free-play').addEventListener('click', initFreePlay);
 document.getElementById('s0').addEventListener('click', handleStrum);
 document.getElementById('s1').addEventListener('click', handleStrum);
 document.getElementById('s2').addEventListener('click', handleStrum);
@@ -32,10 +35,10 @@ document.getElementById('s3').addEventListener('click', handleStrum);
 document.getElementById('s4').addEventListener('click', handleStrum);
 document.getElementById('s5').addEventListener('click', handleStrum);
 
-
 /*-----------Functions------------*/
 function init() {
-    messageEl.style.visibility = 'hidden';
+    messageEl.style.visibility = "hidden";
+    freePlayBtn.style.visibility = "hidden";
     playBtn.style.visibility = "hidden";
     gameOver = false;
     score = 0;
@@ -44,19 +47,42 @@ function init() {
     computerArray = [];
     computerChoice();
 }
-function handleStrum(evt) {
-    //guard
-    if (computerTurn === true) return;
-        pChoice = parseInt(evt.target.id.replace('s', ''));
-        playerArray.push(pChoice);
-        pCurChoice = playerArray[playerArray.length - 1];
-        renderResults(pCurChoice);
-    if (playerArray.length === computerArray.length) {
+
+function initFreePlay() {
+    if (freePlay === false) {
+        freePlay = true;
+        messageEl.style.visibility = "hidden";
+        computerTurn = false;
+        for (let i = 0; i < stringEl.length; i++) {
+        stringEl[i].classList.add('pick');
+        }
+    } else {
+        freePlay = false;
         computerTurn = true;
         for (let i = 0; i < stringEl.length; i++) {
             stringEl[i].classList.remove('pick');
         }
-        const pause = setTimeout (renderScore, 1000)
+    }
+}
+function handleStrum(evt) {
+    //guard
+    if (computerTurn === true) return;
+    if (freePlay === true) {
+        pChoice = parseInt(evt.target.id.replace('s', ''));
+        renderPNotes(pChoice);
+
+    } else {
+        pChoice = parseInt(evt.target.id.replace('s', ''));
+        playerArray.push(pChoice);
+        pCurChoice = playerArray[playerArray.length - 1];
+        renderResults(pCurChoice);
+        if (playerArray.length === computerArray.length) {
+            computerTurn = true;
+            for (let i = 0; i < stringEl.length; i++) {
+                stringEl[i].classList.remove('pick');
+            }
+            const pause = setTimeout (renderScore, 1000)
+        }
     }
 }
 function renderMessage() {
@@ -66,11 +92,13 @@ function renderMessage() {
         messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} points!`;
         messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
         highScoreEl.innerText = `${highScore}`;
+        freePlayBtn.style.visibility = '';
         messageEl.style.visibility = '';
         playBtn.style.visibility = '';
     } else {
     messageEl.innerText = `Game Over. You scored ${score} points!`;
     messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+    freePlayBtn.style.visibility = '';
     messageEl.style.visibility = '';
     playBtn.style.visibility = '';
     }
@@ -140,27 +168,3 @@ function computerChoice() {
     computerArray.push(cChoice); // adds a note to the computers choices
     renderNotes(); //shows the player
 }
-// computer select string
-// computer play string
-// player select string/play string
-// game over message
-
-
-//1.0 player will activate the game pressing the play again or play button. 
-    //1.1 this will init the game by calling render()
-    //1.2  sets the computer to play first
-    //1.3 disables the player controls
-
-//2.0 game will light up and play a sound for a series of buttons
-    //2.1 renderguitar() activates the computers randomindex to push a random number(equalling a note/div) into an array.
-    //2.2 render players scorecard to keep track of score
-
-//player will have a chance to repeat the choices
-    //3.1 allow player controls back to repeat the strings(pushing the number from the string into a seperate array)
-    //3.2 check the players.strings(array) against the computer.strings(array)
-    //3.3 if the player is correct start the function to make the computer function add another string
-    //3.4 if the player is incorrect show the score and congratulate the player. Allow the play again button to work.
-//4.0 game will add another choice per round
-    //4.1 random number index between 0-5 will correspond with the divs(strings) .push() them into an array to compare with the player
-    //4.2 the added index will add and remove a css class to highlight the correct string to show the player for a half second.
-

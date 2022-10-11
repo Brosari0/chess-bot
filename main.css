@@ -8,36 +8,54 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    font-family: 'Varela Round', sans-serif;
 }
 #high-score {
     color: white;
-    font-size: 3vh;
-    margin: 1vh 0 0 4.4vw;
+    font-size: 20px;
+    margin: 10px 0 0 40px;
     font-weight: bolder;
     justify-content: center;
+    font-family: 'Varela Round', sans-serif;
 }
 #high-score-holder > div:first-child {
     color: aqua;
-    margin: 1vh 0 0 2vw;
-    font-size: 2vh;
+    margin: 20px 0 0 15px;
+    font-size: 15px;
 }
 #high-score-holder {
     display: table-cell;
     border-radius: 50%;
     background-color: rgb(4, 28, 167);
     border: 10px solid rgb(12, 151, 175);
-    width: 10vw;
-    height: 10vh;
+    width: 100px;
+    height: 100px;
 }
-button {
+#playB {
     border-color: rgb(231, 54, 54);
     color: white;
     background-color: rgb(245, 55, 86);
-    width: 10vw;
-    height: 10vh;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    font-size: 3vh;
+    font-size: 30px;
+    margin: 20px;
+    font-family: 'Varela Round', sans-serif;
+}
+#free-play{
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-color: rgb(12, 151, 175);
+    border-width: 10px;
+    color: white;
+    background-color: rgb(4, 28, 167);
+    width: 210px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 30px;
     margin: 30px;
+    font-family: 'Varela Round', sans-serif;
 }
 .container {
     position: relative;
