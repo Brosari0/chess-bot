@@ -35,12 +35,12 @@ document.getElementById('s5').addEventListener('click', handleStrum);
 
 /*-----------Functions------------*/
 function init() {
-    playBtn.style.visibility = "hidden"
+    playBtn.style.visibility = "hidden";
     gameOver = false;
     score = 0;
-    messageEl.innerText = ''
-    playerArray = []
-    computerArray = []
+    messageEl.innerText = '';
+    playerArray = [];
+    computerArray = [];
     computerChoice();
 }
 function handleStrum(evt) {
@@ -126,7 +126,6 @@ function renderNotes() {
         }
     }, 500);
 }
-
 
 function computerChoice() {
     if (gameOver === true) return;
