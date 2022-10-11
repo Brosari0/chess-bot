@@ -35,6 +35,7 @@ document.getElementById('s5').addEventListener('click', handleStrum);
 
 /*-----------Functions------------*/
 function init() {
+    messageEl.style.visibility = 'hidden';
     playBtn.style.visibility = "hidden";
     gameOver = false;
     score = 0;
@@ -63,10 +64,14 @@ function renderMessage() {
     if (score > highScore) {
         highScore = score;
         messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} points!`;
+        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
         highScoreEl.innerText = `${highScore}`;
+        messageEl.style.visibility = '';
         playBtn.style.visibility = '';
     } else {
     messageEl.innerText = `Game Over. You scored ${score} points!`;
+    messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+    messageEl.style.visibility = '';
     playBtn.style.visibility = '';
     }
 }

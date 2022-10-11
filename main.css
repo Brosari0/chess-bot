@@ -9,14 +9,25 @@ body {
     flex-direction: column;
     margin: 0;
 }
-.high-score {
+#high-score {
     color: white;
+    font-size: 3vh;
+    margin: 1vh 0 0 4.4vw;
+    font-weight: bolder;
+    justify-content: center;
 }
-.high-score-holder {
+#high-score-holder > div:first-child {
+    color: aqua;
+    margin: 1vh 0 0 2vw;
+    font-size: 2vh;
+}
+#high-score-holder {
+    display: table-cell;
     border-radius: 50%;
-    background-color: red;
-    width: 20px;
-    height: auto;
+    background-color: rgb(4, 28, 167);
+    border: 10px solid rgb(12, 151, 175);
+    width: 10vw;
+    height: 10vh;
 }
 button {
     border-color: rgb(231, 54, 54);
@@ -33,10 +44,13 @@ button {
 }
 h2 {
     color: rgb(235, 75, 75);
-    background: rgba(20, 20, 20, 0.8);
     display: flex;
     justify-content: center;
+    height: 15vh;
+    font-size: 6vh;
     align-items: center;
+    grid-area: s0;
+    z-index: 6;
 }
 .fret-board {
     display: grid;
