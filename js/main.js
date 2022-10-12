@@ -65,6 +65,53 @@ function initFreePlay() {
         }
     }
 }
+
+// function handleKeyStrum(evt) {
+//     console.log(evt);
+//     //guard
+//     if (computerTurn === true) return;
+//     if (freePlay === true) {
+//         if (evt.code === keyQ) {
+//             return pChoice = 0;
+//         } else if (evt.code === keyW) {
+//             return pchoice = 1;
+//         } else if (evt.code === keyE) {
+//             return pchoice = 2;
+//         } else if (evt.code === keyI) {
+//             return pchoice = 3;
+//         } else if (evt.code === keyO) {
+//             return pchoice = 4;
+//         } else if (evt.code === keyP) {
+//             return pchoice = 5;
+//         }
+//         renderPNotes(pChoice);
+//     } else {
+//         if (evt.code === keyQ) {
+//             return pChoice = 0;
+//         } else if (evt.code === keyW) {
+//             return pchoice = 1;
+//         } else if (evt.code === keyE) {
+//             return pchoice = 2;
+//         } else if (evt.code === keyI) {
+//             return pchoice = 3;
+//         } else if (evt.code === keyO) {
+//             return pchoice = 4;
+//         } else if (evt.code === keyP) {
+//             return pchoice = 5;
+//         }
+//         playerArray.push(pChoice);
+//         pCurChoice = playerArray[playerArray.length - 1];
+//         renderResults(pCurChoice);
+//         if (playerArray.length === computerArray.length) {
+//             computerTurn = true;
+//             for (let i = 0; i < stringEl.length; i++) {
+//                 stringEl[i].classList.remove('pick');
+//             }
+//             setTimeout (renderScore, 1000);
+//         }
+//     }
+// }
+
 function handleStrum(evt) {
     //guard
     if (computerTurn === true) return;
@@ -75,20 +122,20 @@ function handleStrum(evt) {
     } else {
         pChoice = parseInt(evt.target.id.replace('s', ''));
         playerArray.push(pChoice);
-        pCurChoice = playerArray[playerArray.length - 1];
-        renderResults(pCurChoice);
-        if (playerArray.length === computerArray.length) {
+        renderResults(pChoice);
+        if (playerArray.length === computerArray.length && gameOver === false) {
             computerTurn = true;
             for (let i = 0; i < stringEl.length; i++) {
                 stringEl[i].classList.remove('pick');
             }
-            const pause = setTimeout (renderScore, 1000)
+            setTimeout (renderScore, 1000);
         }
     }
 }
+
 function renderMessage() {
     gameOver = true;
-    if (score > highScore) {
+    if (score > highScore && score > 1) {
         highScore = score;
         messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} points!`;
         messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
@@ -96,18 +143,41 @@ function renderMessage() {
         freePlayBtn.style.visibility = '';
         messageEl.style.visibility = '';
         playBtn.style.visibility = '';
+        
+    } else if (score > highScore) {
+        highScore = score;
+        messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} point!`;
+        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+        highScoreEl.innerText = `${highScore}`;
+        freePlayBtn.style.visibility = '';
+        messageEl.style.visibility = '';
+        playBtn.style.visibility = '';
+    } else if (score = 0) {
+        messageEl.innerText = `Game Over. You didn't score any points?? :()`;
+        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+        freePlayBtn.style.visibility = '';
+        messageEl.style.visibility = '';
+        playBtn.style.visibility = '';
+    } else if (score = 1) {
+        messageEl.innerText = `Game Over. You scored ${score} point!`;
+        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+        freePlayBtn.style.visibility = '';
+        messageEl.style.visibility = '';
+        playBtn.style.visibility = '';
     } else {
-    messageEl.innerText = `Game Over. You scored ${score} points!`;
-    messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
-    freePlayBtn.style.visibility = '';
-    messageEl.style.visibility = '';
-    playBtn.style.visibility = '';
+        messageEl.innerText = `Game Over. You scored ${score} points!`;
+        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+        freePlayBtn.style.visibility = '';
+        messageEl.style.visibility = '';
+        playBtn.style.visibility = '';
     }
 }
-function renderResults(pCurChoice) {
-        if (pCurChoice === computerArray[playerArray.length -1]) {
-            renderPNotes(pCurChoice);
+
+function renderResults(pChoice) {
+        if (pChoice === computerArray[playerArray.length -1]) {
+            renderPNotes(pChoice);
         } else {
+            gameOver = true;
             computerTurn = true;
             for (let i = 0; i < stringEl.length; i++) {
                 stringEl[i].classList.remove('pick');
@@ -121,12 +191,13 @@ function renderScore() {
     score++;
     computerChoice();
 }
-function renderPNotes(pCurChoice) {
-    let strum = document.getElementById(`s${pCurChoice}`);
+
+function renderPNotes(pChoice) {
+    let strum = document.getElementById(`s${pChoice}`);
     strum.classList.add('p-choice');
     let x = 0;
-    STRINGS[pCurChoice].currentTime = 3;
-    STRINGS[pCurChoice].play();
+    STRINGS[pChoice].currentTime = 3;
+    STRINGS[pChoice].play();
     const timerId = setInterval(function() {
         x++;
         if (x = 1) {
@@ -134,7 +205,7 @@ function renderPNotes(pCurChoice) {
         } else {
             clearInterval(timerId);
         }
-    }, 500,);
+    }, 500);
 }
 
 function renderNotes() {
@@ -164,7 +235,7 @@ function renderNotes() {
 function computerChoice() {
     if (gameOver === true) return;
     computerTurn = true; // disable pControls
-    playerArray = [] //reset player note array to 0
+    playerArray = []; //reset player note array to 0
     const cChoice = Math.floor(Math.random() * 6);
     computerArray.push(cChoice); // adds a note to the computers choices
     renderNotes(); //shows the player
