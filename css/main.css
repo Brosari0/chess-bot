@@ -267,3 +267,7 @@ opacity: 60%;
 transform: scale(3);
 cursor: pointer;
 }
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

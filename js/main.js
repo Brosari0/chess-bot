@@ -46,20 +46,24 @@ function init() {
     messageEl.innerText = '';
     playerArray = [];
     computerArray = [];
+    //Computer starts the game by playing a sequence
     computerChoice();
 }
 
 function initFreePlay() {
     if (freePlay === false) {
         freePlayBtn.style.backgroundColor = 'red';
-        freePlay = true;
         messageEl.style.visibility = "hidden";
+        playBtn.style.visibility = "hidden";
+        freePlay = true;
         computerTurn = false;
         for (let i = 0; i < stringEl.length; i++) {
         stringEl[i].classList.add('pick');
         }
     } else {
+        //turn freeplay off
         freePlayBtn.style.backgroundColor = 'rgb(4, 28, 167)';
+        playBtn.style.visibility = "";
         freePlay = false;
         computerTurn = true;
         for (let i = 0; i < stringEl.length; i++) {
@@ -102,8 +106,7 @@ function initFreePlay() {
 //             return pchoice = 5;
 //         }
 //         playerArray.push(pChoice);
-//         pCurChoice = playerArray[playerArray.length - 1];
-//         renderResults(pCurChoice);
+//         renderResults(pChoice);
 //         if (playerArray.length === computerArray.length) {
 //             computerTurn = true;
 //             for (let i = 0; i < stringEl.length; i++) {
@@ -120,11 +123,12 @@ function handleStrum(evt) {
     if (freePlay === true) {
         pChoice = parseInt(evt.target.id.replace('s', ''));
         renderPNotes(pChoice);
-
     } else {
+        // actual game
+        // getting the number from our evt target to know which string is being played
         pChoice = parseInt(evt.target.id.replace('s', ''));
-        playerArray.push(pChoice);
-        renderResults(pChoice);
+        playerArray.push(pChoice); // add number to array
+        renderResults(pChoice); 
         if (playerArray.length === computerArray.length && gameOver === false) {
             computerTurn = true;
             for (let i = 0; i < stringEl.length; i++) {
@@ -141,39 +145,22 @@ function renderMessage() {
     if (score > highScore && score > 1) {
         highScore = score;
         messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} points!`;
-        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
         highScoreEl.innerText = `${highScore}`;
-        freePlayBtn.style.visibility = '';
-        messageEl.style.visibility = '';
-        playBtn.style.visibility = '';
-        
     } else if (score > highScore) {
         highScore = score;
         messageEl.innerText = `NEW HIGH SCORE!! You scored ${highScore} point!`;
-        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
         highScoreEl.innerText = `${highScore}`;
-        freePlayBtn.style.visibility = '';
-        messageEl.style.visibility = '';
-        playBtn.style.visibility = '';
     } else if (score === 0) {
-        messageEl.innerText = `Game Over. You didn't score any points. 😓`;
-        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
-        freePlayBtn.style.visibility = '';
-        messageEl.style.visibility = '';
-        playBtn.style.visibility = '';
+        messageEl.innerText = `GAME OVER. You didn't score any points. 😓`;
     } else if (score === 1) {
-        messageEl.innerText = `Game Over. You scored ${score} point!`;
-        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
-        freePlayBtn.style.visibility = '';
-        messageEl.style.visibility = '';
-        playBtn.style.visibility = '';
+        messageEl.innerText = `GAME OVER. You scored ${score} point!`;
     } else {
-        messageEl.innerText = `Game Over. You scored ${score} points!`;
-        messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
-        freePlayBtn.style.visibility = '';
-        messageEl.style.visibility = '';
-        playBtn.style.visibility = '';
+        messageEl.innerText = `GAME OVER. You scored ${score} points!`;
     }
+    messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
+    freePlayBtn.style.visibility = '';
+    messageEl.style.visibility = '';
+    playBtn.style.visibility = '';
 }
 
 function renderResults(pChoice) {
