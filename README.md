@@ -3,13 +3,13 @@ Simon is a game where you repeat notes in a random order selected by the compute
 
 This game used HTML, CSS and JavaScript
 
-<span id="header" align="right">
+<div id="header" align="center">
   <img src="https://i.imgur.com/kV4mhgk.png" width="400" height="500">
-</span>
+</div>
 
-<span id="header" align="right">
+<div id="header" align="center">
   <img src="https://i.imgur.com/sE97Bqk.png" width="400" height="500">
-</span>
+</div>
 
 https://brosari0.github.io/simon/ to get started press play and repeat after the computer.
 
