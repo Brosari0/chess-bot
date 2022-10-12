@@ -11,25 +11,28 @@ body {
     font-family: 'Varela Round', sans-serif;
 }
 #high-score {
-    color: green;
+    color: rgb(122, 122, 194);
     font-size: 50px;
-    margin: 0 0 0 40px;
     font-weight: bolder;
     justify-content: center;
+    align-items: center;
     font-family: 'Varela Round', sans-serif;
 }
 #high-score-holder > div:first-child {
     color: aqua;
-    margin: 20px 0 0 15px;
     font-size: 15px;
+    margin-top: 0;
 }
 #high-score-holder {
-    display: table-cell;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     border-radius: 50%;
     background-color: rgb(4, 28, 167);
     border: 10px solid rgb(12, 151, 175);
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 80px;
 }
 #playB {
     border-color: rgb(231, 54, 54);

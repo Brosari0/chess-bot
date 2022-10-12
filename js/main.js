@@ -51,6 +51,7 @@ function init() {
 
 function initFreePlay() {
     if (freePlay === false) {
+        freePlayBtn.style.backgroundColor = 'red';
         freePlay = true;
         messageEl.style.visibility = "hidden";
         computerTurn = false;
@@ -58,6 +59,7 @@ function initFreePlay() {
         stringEl[i].classList.add('pick');
         }
     } else {
+        freePlayBtn.style.backgroundColor = 'rgb(4, 28, 167)';
         freePlay = false;
         computerTurn = true;
         for (let i = 0; i < stringEl.length; i++) {
@@ -134,6 +136,7 @@ function handleStrum(evt) {
 }
 
 function renderMessage() {
+    console.log(score)
     gameOver = true;
     if (score > highScore && score > 1) {
         highScore = score;
@@ -152,13 +155,13 @@ function renderMessage() {
         freePlayBtn.style.visibility = '';
         messageEl.style.visibility = '';
         playBtn.style.visibility = '';
-    } else if (score = 0) {
-        messageEl.innerText = `Game Over. You didn't score any points?? :()`;
+    } else if (score === 0) {
+        messageEl.innerText = `Game Over. You didn't score any points. 😓`;
         messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
         freePlayBtn.style.visibility = '';
         messageEl.style.visibility = '';
         playBtn.style.visibility = '';
-    } else if (score = 1) {
+    } else if (score === 1) {
         messageEl.innerText = `Game Over. You scored ${score} point!`;
         messageEl.style.background = 'rgba(20, 20, 20, 0.8)';
         freePlayBtn.style.visibility = '';
