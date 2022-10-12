@@ -11,9 +11,9 @@ body {
     font-family: 'Varela Round', sans-serif;
 }
 #high-score {
-    color: white;
-    font-size: 20px;
-    margin: 10px 0 0 40px;
+    color: orange;
+    font-size: 50px;
+    margin: 0 0 0 40px;
     font-weight: bolder;
     justify-content: center;
     font-family: 'Varela Round', sans-serif;

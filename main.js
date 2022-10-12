@@ -12,7 +12,7 @@ const STRINGS = {
 let playerArray = [];
 let computerArray = [];
 let score;
-let computerTurn;
+let computerTurn = true;
 let pCurChoice;
 let gameOver;
 let highScore = 0;
@@ -41,6 +41,7 @@ function init() {
     freePlayBtn.style.visibility = "hidden";
     playBtn.style.visibility = "hidden";
     gameOver = false;
+    computerTurn = true;
     score = 0;
     messageEl.innerText = '';
     playerArray = [];
