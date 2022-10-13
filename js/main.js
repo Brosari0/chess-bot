@@ -9,20 +9,20 @@ const STRINGS = {
 };
 
 /*---------State Variables-----------*/
-let playerArray = [];
-let computerArray = [];
+let playerArray;
+let computerArray;
 let score;
 let computerTurn = true;
 let pCurChoice;
 let gameOver;
 let highScore = 0;
 let freePlay = false;
-/*---------Cached Elements-----------*/
 
+/*---------Cached Elements-----------*/
 const playBtn = document.getElementById('playB');
 const highScoreEl = document.getElementById('high-score');
 const messageEl = document.querySelector('h2');
-let stringEl = document.getElementsByClassName('strings');
+const stringEl = document.getElementsByClassName('strings');
 const freePlayBtn = document.getElementById('free-play');
 
 /*---------Event Listeners--------*/
@@ -71,51 +71,6 @@ function initFreePlay() {
         }
     }
 }
-
-// function handleKeyStrum(evt) {
-//     console.log(evt);
-//     //guard
-//     if (computerTurn === true) return;
-//     if (freePlay === true) {
-//         if (evt.code === keyQ) {
-//             return pChoice = 0;
-//         } else if (evt.code === keyW) {
-//             return pchoice = 1;
-//         } else if (evt.code === keyE) {
-//             return pchoice = 2;
-//         } else if (evt.code === keyI) {
-//             return pchoice = 3;
-//         } else if (evt.code === keyO) {
-//             return pchoice = 4;
-//         } else if (evt.code === keyP) {
-//             return pchoice = 5;
-//         }
-//         renderPNotes(pChoice);
-//     } else {
-//         if (evt.code === keyQ) {
-//             return pChoice = 0;
-//         } else if (evt.code === keyW) {
-//             return pchoice = 1;
-//         } else if (evt.code === keyE) {
-//             return pchoice = 2;
-//         } else if (evt.code === keyI) {
-//             return pchoice = 3;
-//         } else if (evt.code === keyO) {
-//             return pchoice = 4;
-//         } else if (evt.code === keyP) {
-//             return pchoice = 5;
-//         }
-//         playerArray.push(pChoice);
-//         renderResults(pChoice);
-//         if (playerArray.length === computerArray.length) {
-//             computerTurn = true;
-//             for (let i = 0; i < stringEl.length; i++) {
-//                 stringEl[i].classList.remove('pick');
-//             }
-//             setTimeout (renderScore, 1000);
-//         }
-//     }
-// }
 
 function handleStrum(evt) {
     //guard
