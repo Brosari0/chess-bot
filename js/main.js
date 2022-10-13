@@ -1,11 +1,11 @@
 /*----------Constants-----------*/
 const STRINGS = {
-    '0': new Audio('1st_String_E_64kb.mp3'),
-    '1': new Audio('2nd_String_B__64kb.mp3'),
-    '2': new Audio('3rd_String_G_64kb.mp3'),
-    '3': new Audio('4th_String_D_64kb.mp3'),
-    '4': new Audio('5th_String_A_64kb.mp3'),
-    '5': new Audio('6th_String_E_64kb.mp3'),
+    '0': new Audio('strings\\1st_String_E_64kb.mp3'),
+    '1': new Audio('strings\\2nd_String_B__64kb.mp3'),
+    '2': new Audio('strings\\3rd_String_G_64kb.mp3'),
+    '3': new Audio('strings\\4th_String_D_64kb.mp3'),
+    '4': new Audio('strings\\5th_String_A_64kb.mp3'),
+    '5': new Audio('strings\\6th_String_E_64kb.mp3'),
 };
 
 /*---------State Variables-----------*/
