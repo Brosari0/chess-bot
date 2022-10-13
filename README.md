@@ -5,30 +5,15 @@ Simon is a game where you repeat notes in a random order selected by the compute
 
 <div>This game used HTML, CSS and JavaScript</div>
 
-<<<<<<< Updated upstream
+
 <div id="header" align="center">
   <img src="https://i.imgur.com/kV4mhgk.png" width="800" height="500">
 </div>
 
 <div id="header" align="center">
   <img src="https://i.imgur.com/sE97Bqk.png" width="800" height="500">
-=======
-
-<div id="header" align="center">
-  <img src="https://i.imgur.com/kV4mhgk.png" width="800" height="500">
->>>>>>> Stashed changes
 </div>
 
-<div id="header" align="center">
-  <img src="https://i.imgur.com/sE97Bqk.png" width="800" height="500">
-</div>
-
-<<<<<<< Updated upstream
-future features: 
-    difficulty settings
-    keyboard functionality
-    animated boxes that show what notes were played
-=======
 <p><span>[Simon](https://brosari0.github.io/simon/)</span> to get started press play and repeat after the computer.
 </p>
 
@@ -37,4 +22,3 @@ future features:
   <li color="blue">keyboard functionality</li>
   <li color="yellow">animated boxes that show what notes were played<li>
 </ul>
->>>>>>> Stashed changes
