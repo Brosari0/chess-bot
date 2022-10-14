@@ -58,7 +58,7 @@ function initFreePlay() {
         freePlay = true;
         computerTurn = false;
         for (let i = 0; i < stringEl.length; i++) {
-        stringEl[i].classList.add('pick');
+            stringEl[i].classList.add('pick');
         }
     } else {
         //turn freeplay off
@@ -75,6 +75,7 @@ function initFreePlay() {
 function handleStrum(evt) {
     //guard
     if (computerTurn === true) return;
+    //freeplay gamemode
     if (freePlay === true) {
         pChoice = parseInt(evt.target.id.replace('s', ''));
         renderPNotes(pChoice);
@@ -95,7 +96,6 @@ function handleStrum(evt) {
 }
 
 function renderMessage() {
-    console.log(score)
     gameOver = true;
     if (score > highScore && score > 1) {
         highScore = score;
@@ -119,18 +119,18 @@ function renderMessage() {
 }
 
 function renderResults(pChoice) {
-        if (pChoice === computerArray[playerArray.length -1]) {
-            renderPNotes(pChoice);
-        } else {
-            gameOver = true;
-            computerTurn = true;
-            for (let i = 0; i < stringEl.length; i++) {
-                stringEl[i].classList.remove('pick');
-            }
-        //game over
-            renderMessage();
+    if (pChoice === computerArray[playerArray.length -1]) {
+        renderPNotes(pChoice);
+    } else {
+        gameOver = true;
+        computerTurn = true;
+        for (let i = 0; i < stringEl.length; i++) {
+            stringEl[i].classList.remove('pick');
         }
-    };
+    //game over
+        renderMessage();
+    }
+}
 
 function renderScore() {
     score++;
