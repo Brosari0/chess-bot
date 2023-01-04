@@ -7,15 +7,17 @@ const initPieceOrder = ['rook', 'knight', 'bishop', 'queen', 'king', 'bishop', '
 /*---------State Variables-----------*/
 
 /*---------Cached Elements-----------*/
-printElementWithIdConstants();
+// printElementWithIdConstants();
 const board = document.getElementById("board");
+const flipBoard = document.getElementById("flipBoard");
+const savedGameNotation = document.getElementById("savedGameNotation");
 
 let squares = null;
 /*---------Event Listeners--------*/
 
 /*-----------Functions------------*/
 
-initBoard();
+
 class Piece {
     constructor(r, c) {
         this.r = r;
@@ -33,8 +35,7 @@ class Knight extends Piece {
     }
 }
 
-const k = new Knight(1, 1);
-console.log(k, k.index)
+initBoard();
 
 function initBoard() {
     board.innerHTML = `<div></div>`.repeat(BOARD_WIDTH * BOARD_HEIGHT);
@@ -46,19 +47,21 @@ function initBoard() {
 
     const numberCaptions = Array.from(Array(9).keys()).splice(1);
     const letterCaptions = numberCaptions.map(n => String.fromCharCode("a".charCodeAt(0) - 1 + n));
-    console.log(numberCaptions, letterCaptions);
-
     const revNumberCaptions = numberCaptions.reverse();
     const revLetterCaptions = letterCaptions.reverse();
-    console.log(revNumberCaptions, revLetterCaptions);
 
     for (let r = 0, n = 0; r < boardData.length; r++) {
         for (let c = 0; c < boardData[r].length; c++, n++) {
             const tile = squares[n];
-            let color = r < 3 ? 'white' :
+            tile.onclick = () => console.log(boardData[r][c]);
+
+            const color = r < 3 ? 'white' :
                 r > boardData.length - 3 ? 'dark' : '';
             if (r === 0) {
                 tile.dataset.role = `${color}-${initPieceOrder[c]}`;
+                boardData[r][c] = {
+                    r, c, piece: new Piece(r, c)
+                };
             } else if (r === 1) {
                 tile.dataset.role = `${color}-pawn`;
             } else if (r === boardData.length - 2) {
