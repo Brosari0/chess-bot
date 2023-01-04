@@ -1,4 +1,4 @@
-
+const compassVectors = CompassVectors();
 export class Piece {
   static Colors = {
     Dark: "Dark",
@@ -14,6 +14,7 @@ export class Piece {
     this.name = pieceName;
     this.r = r;
     this.c = c;
+    this.vectors = [];
   }
 
   get index() {
@@ -34,6 +35,20 @@ class Pawn extends Piece {
   }
 }
 
+class Rook extends Piece {
+  constructor(controller, pieceColor, pieceName, r, c) {
+    super(controller, pieceColor, pieceName, r, c);
+    this.vectors = [compassVectors.n, compassVectors.e, compassVectors.s, compassVectors.w];
+  }
+}
+
+class Queen extends Piece {
+  constructor(controller, pieceColor, pieceName, r, c) {
+    super(controller, pieceColor, pieceName, r, c);
+    /* For the Queen we fill an array with all the values in the compassVectors object */
+    this.vectors = Array.from(Object.values(compassVectors));
+  }
+}
 
 export function createChessPiece(controller, pieceColor, pieceName, r, c) {
   switch (pieceName) {
@@ -89,6 +104,21 @@ function PieceTypes() {
     }
   }
 }
-// String.prototype.toProperCase = (word) => {
-//   return word.charAt(0).toUpperCase + word.substring(1);
-// }
+
+function CompassVectors() {
+  return {
+    n: Array(8).fill({ r: -1, c: 0 }),
+    e: Array(8).fill({ r: 0, c: 1 }),
+    s: Array(8).fill({ r: 1, c: 0 }),
+    w: Array(8).fill({ r: 0, c: -1 }),
+    ne: Array(8).fill({ r: -1, c: 1 }),
+    se: Array(8).fill({ r: 1, c: 1 }),
+    nw: Array(8).fill({ r: -1, c: -1 }),
+    sw: Array(8).fill({ r: 1, c: 1 }),
+  }
+}
+
+// Northeast (NE), 45°, halfway between north and east, is the opposite of southwest.
+// Southeast (SE), 135°, halfway between south and east, is the opposite of northwest.
+// Southwest (SW), 225°, halfway between south and west, is the opposite of northeast.
+// Northwest (NW), 315°, halfway between north and west, is the opposite of southeast.
