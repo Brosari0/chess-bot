@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   --tile-color-light: #f0d9b5;
-  --tile-color-dark: #b58863;
+  --tile-color-Dark: #b58863;
   --tile-border-color-preview: green;
   --tile-color-active: yellow;
   --tile-size: 50px;
@@ -54,7 +54,7 @@ section#board div:nth-child(n + 33):nth-child(-n + 40):nth-child(even),
 section#board div:nth-child(n + 41):nth-child(-n + 48):nth-child(odd),
 section#board div:nth-child(n + 57):nth-child(-n + 64):nth-child(odd),
 section#board div:nth-child(n + 49):nth-child(-n + 56):nth-child(even) {
-  background-color: var(--tile-color-dark) !important;
+  background-color: var(--tile-color-Dark) !important;
 }
 
 div {
@@ -63,50 +63,50 @@ div {
   background-position: center;
 }
 
-div[data-role="dark-bishop"] {
+div[data-role="Dark-Bishop"] {
   background-image: url("../Pieces/Chess_bdt45.svg.png");
 }
 
-div[data-role="white-bishop"] {
+div[data-role="White-Bishop"] {
   background-image: url("../Pieces/Chess_blt45.svg.png");
 }
 
-div[data-role="dark-king"] {
+div[data-role="Dark-King"] {
   background-image: url("../Pieces/Chess_kdt45.svg.png");
 }
 
-div[data-role="white-king"] {
+div[data-role="White-King"] {
   background-image: url("../Pieces/Chess_klt45.svg.png");
 }
 
-div[data-role="dark-knight"] {
+div[data-role="Dark-Knight"] {
   background-image: url("../Pieces/Chess_ndt45.svg.png");
 }
 
-div[data-role="white-knight"] {
+div[data-role="White-Knight"] {
   background-image: url("../Pieces/Chess_nlt45.svg.png");
 }
 
-div[data-role="dark-pawn"] {
+div[data-role="Dark-Pawn"] {
   background-image: url("../Pieces/Chess_pdt45.svg.png");
 }
 
-div[data-role="white-pawn"] {
+div[data-role="White-Pawn"] {
   background-image: url("../Pieces/Chess_plt45.svg.png");
 }
 
-div[data-role="dark-queen"] {
+div[data-role="Dark-Queen"] {
   background-image: url("../Pieces/Chess_qdt45.svg.png");
 }
 
-div[data-role="white-queen"] {
+div[data-role="White-Queen"] {
   background-image: url("../Pieces/Chess_qlt45.svg.png");
 }
 
-div[data-role="dark-rook"] {
+div[data-role="Dark-Rook"] {
   background-image: url("../Pieces/Chess_rdt45.svg.png");
 }
 
-div[data-role="white-rook"] {
+div[data-role="White-Rook"] {
   background-image: url("../Pieces/Chess_rlt45.svg.png");
 }
