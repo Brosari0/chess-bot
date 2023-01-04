@@ -25,3 +25,6 @@ function printElementWithIdConstants() {
 function chessDotComNotationToList(notation) {
     return notation.match(/[^\s]+/g)
 }
+
+window.chessDotComNotationToList = chessDotComNotationToList;
+window.savedGameNotation = savedGameNotation;
