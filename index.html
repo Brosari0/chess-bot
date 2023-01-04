@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,27 @@
     <link rel="icon" type="image/x-icon" href="favicon\favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
     <script defer src="js/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <script src="./js/main.js" type="module"></script>
 </head>
+
 <body>
-    <h1>Welcome to our chessbot!</h1>
+    <main>
+        <section id="board"></section>
+    </main>
+    <aside>
+        <button id="flipBoard">&#8635;</button>
+        <textarea id="savedGameNotation" rows="4" cols="40">1. e4 e5 2. Bc4 Nf6 3. d3 d5 4. exd5 Nxd5 5. Nf3 Bg4 6. c3 Nb6 7. Bxf7+ Kxf7 8.
+            Nxe5+ Kg8 9. Nxg4 Qe8+ 10. Ne3 Bc5 11. Qb3+ Kf8 12. O-O N8d7 13. d4 Be7 14. Nd5
+            Qf7 15. Nxe7 Qxb3 16. axb3 Kxe7 17. Bg5+ Nf6 18. Nd2 Kf7 19. Nc4 Rhe8 20. Ne5+
+            Kg8 21. Bxf6 gxf6 22. Nc4 Nd5 23. Ne3 Kf7 24. Nxd5 1-0</textarea>
+    </aside>
 </body>
+
 </html>
