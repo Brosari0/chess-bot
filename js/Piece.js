@@ -25,6 +25,9 @@ export class Piece {
 class Knight extends Piece {
   constructor(controller, pieceColor, pieceName, r, c) {
     super(controller, pieceColor, pieceName, r, c);
+    /* How the Chess Knight Moves: https://www.mark-weeks.com/aboutcom/ble132kn.htm */
+
+    this.vectors = [[offset(-2, 1)], [offset(-1, 2)]]
   }
 }
 
@@ -107,15 +110,19 @@ function PieceTypes() {
 
 function CompassVectors() {
   return {
-    n: Array(8).fill({ r: -1, c: 0 }),
-    e: Array(8).fill({ r: 0, c: 1 }),
-    s: Array(8).fill({ r: 1, c: 0 }),
-    w: Array(8).fill({ r: 0, c: -1 }),
-    ne: Array(8).fill({ r: -1, c: 1 }),
-    se: Array(8).fill({ r: 1, c: 1 }),
-    nw: Array(8).fill({ r: -1, c: -1 }),
-    sw: Array(8).fill({ r: 1, c: 1 }),
+    n: Array(8).fill(offset(-1, 0)),
+    e: Array(8).fill(offset(0, 1)),
+    s: Array(8).fill(offset(1, 0)),
+    w: Array(8).fill(offset(0, -1)),
+    ne: Array(8).fill(offset(-1, 1)),
+    se: Array(8).fill(offset(1, 1)),
+    nw: Array(8).fill(offset(-1, -1)),
+    sw: Array(8).fill(offset(1, 1))
   }
+}
+
+function offset(r, c) {
+  return { r, c }
 }
 
 // Northeast (NE), 45°, halfway between north and east, is the opposite of southwest.
