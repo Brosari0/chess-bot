@@ -2,11 +2,16 @@
 import { promiseExec, userInput } from "./script-utils.mjs";
 import { scriptMeta } from "./scripts-meta.mjs";
 
+const getCommands = {
+    "add-all": `git add -A`,
+    "commit-message": `git commit -m`,
+    "commit-file-message": `git commit -a`
+}
+
 export async function commit() {
     const branch = await userBranch();
     let aFlag = false;
-
-    const commands = [`git add -A`];
+    await promiseExec(getCommands["add-all"]);
 
     if (process.argv.includes("-m")) {
         let comments = "";
@@ -19,23 +24,18 @@ export async function commit() {
             console.log("⚠️", "batch-git-user-input cancelled: no user input");
             return;
         }
-        commands.push(`git commit -m "${comments}"`);
+        await promiseExec(`${getCommands["commit-message"]} "${comments}"`);
     } else if (process.argv.includes("-a")) {
-        commands.push(`git commit -a`);
-        aFlag = true;
+        await promiseExec(getCommands["commit-file-message"]);
+        console.log("Test")
     } else {
-        commands.push(`git commit -m "Quick Commit"`);
+        await promiseExec(`${getCommands["commit-message"]} "Quick Commit"`);
     }
 
-    await promiseExec(commands.join(` && `))
-        .catch(error => console.error("Make sure there are changes to commit", error));
-
-    console.log(commands.join(` && `))
-
-    if (!aFlag)
-        push();
-    else
-        console.log(`Don't forget to run: npm run push`);
+    // if (!aFlag)
+    //     push();
+    // else
+    //     console.log(`Don't forget to run: npm run push`);
 }
 
 export async function push() {
