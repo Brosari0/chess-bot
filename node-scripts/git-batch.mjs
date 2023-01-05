@@ -29,7 +29,7 @@ export async function commit() {
 
     await promiseExec(commands.join(` && `))
         .catch(error => console.error("Make sure there are changes to commit", error));
-    if (aFlag)
+    if (!aFlag)
         push();
     else
         console.log(`Don't forget to run: npm run push`);
