@@ -11,7 +11,8 @@ const getCommands = {
 export async function commit() {
     const branch = await userBranch();
 
-    await promiseExec(getCommands["add-all"]);
+    await promiseExec(getCommands["add-all"])
+        .catch(error => console.error(error));
 
     if (process.argv.includes("-m")) {
         let comments = "";
@@ -24,13 +25,17 @@ export async function commit() {
             console.log("⚠️", "batch-git-user-input cancelled: no user input");
             return;
         }
-        await promiseExec(`${getCommands["commit-message"]} "${comments}"`);
+        await promiseExec(`${getCommands["commit-message"]} "${comments}"`)
+            .catch(error => console.error(error));
     } else if (process.argv.includes("-a")) {
-        await promiseExec(getCommands["commit-file-message"]);
+        await promiseExec(getCommands["commit-file-message"])
+            .catch(error => console.error(error));
     } else {
-        await promiseExec(`${getCommands["commit-message"]} "Quick Commit"`);
+        await promiseExec(`${getCommands["commit-message"]} "Quick Commit"`)
+            .catch(error => console.error(error));
     }
-    return await promiseExec(`git push origin ${branch} -u`);
+    return await promiseExec(`git push origin ${branch} -u`)
+        .catch(error => console.error(error));
 }
 
 export async function userBranch() {
