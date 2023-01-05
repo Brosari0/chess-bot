@@ -29,6 +29,9 @@ export async function commit() {
 
     await promiseExec(commands.join(` && `))
         .catch(error => console.error("Make sure there are changes to commit", error));
+
+    console.log(commands.join(` && `))
+
     if (!aFlag)
         push();
     else
