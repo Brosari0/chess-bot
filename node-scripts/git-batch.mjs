@@ -27,22 +27,10 @@ export async function commit() {
         await promiseExec(`${getCommands["commit-message"]} "${comments}"`);
     } else if (process.argv.includes("-a")) {
         await promiseExec(getCommands["commit-file-message"]);
-        console.log("Test")
     } else {
         await promiseExec(`${getCommands["commit-message"]} "Quick Commit"`);
     }
-
-    // if (!aFlag)
-    //     push();
-    // else
-    //     console.log(`Don't forget to run: npm run push`);
-}
-
-export async function push() {
-    const meta = await scriptMeta();
-    return await promiseExec(`git push origin ${meta.user.git.branch} -u`)
-        .catch(error => console.error("Unknown error: ", error))
-
+    return await promiseExec(`git push origin ${meta.user.git.branch} -u`);
 }
 
 export async function userBranch() {
@@ -51,19 +39,3 @@ export async function userBranch() {
         await promiseExec(`git checkout ${meta.user.git.branch}`).catch(error => console.error(error, "Error switching git to user branch."));
     return meta.user.git.branch;
 }
-
-/* 
-gitChanges doesn't work if the files were already added to the queue.
-
-if (!changes) {
-    console.log(`Commit Cancelled: ${branch} is up to date.`);
-    return;
-}
-
-export async function gitChanges() {
-    return await promiseExec(`git ls-files --others --exclude-standard`);
-
-    const changes = await gitChanges();
-}
-
-*/

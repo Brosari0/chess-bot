@@ -39,3 +39,21 @@ export async function userInput(question) {
         });
     });
 }
+
+
+
+/* 
+gitChanges doesn't work if the files were already added to the queue.
+
+if (!changes) {
+    console.log(`Commit Cancelled: ${branch} is up to date.`);
+    return;
+}
+
+export async function gitChanges() {
+    return await promiseExec(`git ls-files --others --exclude-standard`);
+
+    const changes = await gitChanges();
+}
+
+*/
