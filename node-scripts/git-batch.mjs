@@ -4,18 +4,12 @@ import { scriptMeta } from "./scripts-meta.mjs";
 
 export async function commit() {
     const branch = await userBranch();
-
-    const changes = await gitChanges();
-    if (!changes) {
-        console.log(`Commit Cancelled: ${branch} is up to date.`);
-        return;
-    }
+    let aFlag = false;
 
     const commands = [`git add -A`];
 
     if (process.argv.includes("-m")) {
         let comments = "";
-
         if (process.argv.indexOf("-m") === process.argv.length - 2)
             comments = process.argv[process.argv.indexOf("-m") + 1];
         else
@@ -28,22 +22,17 @@ export async function commit() {
         commands.push(`git commit -m "${comments}"`);
     } else if (process.argv.includes("-a")) {
         commands.push(`git commit -a`);
+        aFlag = true;
     } else {
         commands.push(`git commit -m "Quick Commit"`);
     }
 
     await promiseExec(commands.join(` && `))
         .catch(error => console.error("Make sure there are changes to commit", error));
-
-    console.log("Hello")
-    if (comments)
+    if (aFlag)
         push();
     else
         console.log(`Don't forget to run: npm run push`);
-}
-
-export async function gitChanges() {
-    return await promiseExec(`git ls-files --others --exclude-standard`);
 }
 
 export async function push() {
@@ -59,3 +48,19 @@ export async function userBranch() {
         await promiseExec(`git checkout ${meta.user.git.branch}`).catch(error => console.error(error, "Error switching git to user branch."));
     return meta.user.git.branch;
 }
+
+/* 
+gitChanges doesn't work if the files were already added to the queue.
+
+if (!changes) {
+    console.log(`Commit Cancelled: ${branch} is up to date.`);
+    return;
+}
+
+export async function gitChanges() {
+    return await promiseExec(`git ls-files --others --exclude-standard`);
+
+    const changes = await gitChanges();
+}
+
+*/
