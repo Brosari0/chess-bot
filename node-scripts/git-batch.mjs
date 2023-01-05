@@ -10,7 +10,7 @@ const getCommands = {
 
 export async function commit() {
     const branch = await userBranch();
-    let aFlag = false;
+
     await promiseExec(getCommands["add-all"]);
 
     if (process.argv.includes("-m")) {
@@ -30,7 +30,7 @@ export async function commit() {
     } else {
         await promiseExec(`${getCommands["commit-message"]} "Quick Commit"`);
     }
-    return await promiseExec(`git push origin ${meta.user.git.branch} -u`);
+    return await promiseExec(`git push origin ${branch} -u`);
 }
 
 export async function userBranch() {
