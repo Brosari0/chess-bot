@@ -1,0 +1,57 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>260</y><w>370</w><h>290</h></coordinates><panel_attributes>&lt;&lt;View&gt;&gt;
+Chess-Bot::Class
+bg=cyan
+--
+&lt;&lt;Constuctor&gt;&gt;View(BoardModel, Container:HTMLElement)
+-containter: Container
+-controller:null
+-model: BoardModel
+--
+Methods
+--
+#update():void
+#registerListener(Controller)
+--
+Events
+--
+#squareClicked(e)
+#swapSides(e)
+--
+Responsibilities
+-- Renders presentation of the model
+    in a particular format</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>90</y><w>370</w><h>330</h></coordinates><panel_attributes>&lt;&lt;Controller&gt;&gt;
+Chess-Bot::Class
+bg=magenta
+--
+&lt;&lt;Constuctor&gt;&gt;View(BoardModel, View)
+-model: BoardModel
+-view:View
+--
+Methods
+--
+#requestSwapSides():void
+#squareClicked(r, c):void
+#update():void
+--
+Events
+--
+
+--
+Responsibilities
+-- Responds to the user input 
+-- Performs interactions on the data model objects</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>370</w><h>250</h></coordinates><panel_attributes>&lt;&lt;BoardModel&gt;&gt;
+Chess-Bot::Class
+bg=blue
+--
+Methods
+--
+#previewSquare(r:int, c:int)
+#update():void
+--
+Responsibilities
+*-- Managing the data of the application*
+-- Receives user input from the controller </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>390</x><y>0</y><w>660</w><h>80</h></coordinates><panel_attributes>References..
+bg=black
+-- Examples of Model-View-Controller Pattern:http://www.cs.utsa.edu/~cs3443/mvc-example.html
+-- Model-View-Controller Architectures:http://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/mvc/index.htm
+-- Model–view–controller: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller#:~:text=The%20model%20is%20responsible%20for,on%20the%20data%20model%20objects.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>410</x><y>380</y><w>60</w><h>110</h></coordinates><panel_attributes>Player</panel_attributes><additional_attributes></additional_attributes></element></diagram>
