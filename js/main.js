@@ -1,3 +1,4 @@
+import { getPlayerGamesChessDotCom, getTestPlayer, PlayerChessDotComFactory, testPlayerChessDotComFactory } from "./chess-com-player.js";
 import { Controller } from "./controller.js";
 
 /*----------Constants-----------*/
@@ -28,3 +29,18 @@ function chessDotComNotationToList(notation) {
 
 window.chessDotComNotationToList = chessDotComNotationToList;
 window.savedGameNotation = savedGameNotation;
+
+
+async function loadSamplePlayerLive() {
+    const player = await testPlayerChessDotComFactory();
+    let games = getPlayerGamesChessDotCom(player);
+    console.log(player)
+}
+
+async function loadSamplePlayerFromMockData() {
+    const player = await getTestPlayer();
+    let games = getPlayerGamesChessDotCom(player);
+    console.log(games)
+}
+
+loadSamplePlayerFromMockData()

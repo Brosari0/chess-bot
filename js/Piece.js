@@ -34,7 +34,6 @@ class Knight extends Piece {
 class Pawn extends Piece {
   constructor(controller, pieceColor, pieceName, r, c) {
     super(controller, pieceColor, pieceName, r, c);
-    console.log(this.color)
   }
 }
 
@@ -54,28 +53,30 @@ class Queen extends Piece {
 }
 
 export function createChessPiece(controller, pieceColor, pieceName, r, c) {
+  let piece = null;
   switch (pieceName) {
-    case Piece.Types.Pawn.Name:
-      return new Pawn(controller, pieceColor, pieceName, r, c)
+    case Piece.Types.Pawn.name:
+      piece = new Pawn(controller, pieceColor, pieceName, r, c);
       break;
-    case Piece.Types.Knight.Name:
-
+    case Piece.Types.Knight.name:
+      piece = new Knight(controller, pieceColor, pieceName, r, c);
       break;
-    case Piece.Types.Bishop.Name:
-
+    case Piece.Types.Bishop.name:
+      piece = new Bishop(controller, pieceColor, pieceName, r, c);
       break;
-    case Piece.Types.Rook.Name:
-
+    case Piece.Types.Rook.name:
+      piece = new Rook(controller, pieceColor, pieceName, r, c);
       break;
-    case Piece.Types.Queen.Name:
-
+    case Piece.Types.Queen.name:
+      piece = new Queen(controller, pieceColor, pieceName, r, c);
       break;
-    case Piece.Types.King.Name:
-
+    case Piece.Types.King.name:
+      piece = new King(controller, pieceColor, pieceName, r, c);
       break;
     default:
       console.warn(pieceName + " not supported");
   }
+  return piece;
 }
 
 
